@@ -1,5 +1,5 @@
 # native-dialog-py: Python wrapper for the package native-dialog in Rust
 
-## todo
+Python port for [native-dialog][native-dialog] crate.
 
-* async support
+[native-dialog]: https://docs.rs/native-dialog/latest/native_dialog/index.html
