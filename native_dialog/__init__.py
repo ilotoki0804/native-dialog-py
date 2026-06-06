@@ -6,6 +6,7 @@ from native_dialog._api import (
     open_single_file,
     save_single_file,
 )
+from native_dialog._base import Level, NativeDialogError
 
 __all__ = [
     "confirm",
@@ -14,4 +15,6 @@ __all__ = [
     "open_single_dir",
     "open_single_file",
     "save_single_file",
+    "Level",
+    "NativeDialogError"
 ]
