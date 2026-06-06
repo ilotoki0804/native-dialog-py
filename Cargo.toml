@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [features]
 default = ["windows_dpi_awareness"]
-async = ["native-dialog/async"]
+async = ["native-dialog/async", "pyo3/experimental-async"]
 windows_dpi_awareness = ["native-dialog/windows_dpi_awareness"]
 windows_visual_styles = ["native-dialog/windows_visual_styles"]
 

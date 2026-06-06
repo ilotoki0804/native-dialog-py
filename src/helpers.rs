@@ -1,5 +1,8 @@
 use native_dialog::{FileDialogBuilder, MessageDialogBuilder, MessageLevel};
-use pyo3::{exceptions::{PyRuntimeError, PyValueError}, prelude::*};
+use pyo3::{
+    exceptions::{PyRuntimeError, PyValueError},
+    prelude::*,
+};
 use std::path::PathBuf;
 
 pub type Filters = Vec<(String, Vec<String>)>;
@@ -42,7 +45,9 @@ pub fn convert_literal_level(level: &str) -> PyResult<MessageLevel> {
         "info" => Ok(MessageLevel::Info),
         "warning" => Ok(MessageLevel::Warning),
         "error" => Ok(MessageLevel::Error),
-        _ => Err(PyValueError::new_err(format!("level argument only accepts 'info', 'warning', or 'error', but received {level}"))),
+        _ => Err(PyValueError::new_err(format!(
+            "level argument only accepts 'info', 'warning', or 'error', but received {level}"
+        ))),
     }
 }
 
@@ -58,7 +63,9 @@ pub fn to_python_result<T>(native_dialog_result: native_dialog::Result<T>) -> Py
         Io(err) => PyRuntimeError::new_err(format!("system error of IO failure: {err}")),
         Utf8(_) => PyRuntimeError::new_err("invalid utf-8 sequence detected"),
         MissingDep => PyRuntimeError::new_err("cannot find implementation (kdialog/zenity/yad)"),
-        Killed(signal) => PyRuntimeError::new_err(format!("subprocess killed by signal: {signal:?}")),
+        Killed(signal) => {
+            PyRuntimeError::new_err(format!("subprocess killed by signal: {signal:?}"))
+        }
         Other(description) => PyRuntimeError::new_err(description),
     };
 
