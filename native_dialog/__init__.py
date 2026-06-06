@@ -18,5 +18,5 @@ __all__ = [
     "save_single_file",
     "async_support",
     "Level",
-    "NativeDialogError"
+    "NativeDialogError",
 ]

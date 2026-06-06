@@ -53,7 +53,9 @@ async def async_open_multiple_files(
 
 
 async def async_open_single_dir(
-    filename: str | None = None, location: PathLike | None = None, title: str = "Open a Folder"
+    filename: str | None = None,
+    location: PathLike | None = None,
+    title: str = "Open a Folder",
 ) -> Path:
     try:
         return await _native_dialog.async_open_single_dir(filename, location, title)

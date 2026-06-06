@@ -48,7 +48,9 @@ def open_multiple_files(
 
 
 def open_single_dir(
-    filename: str | None = None, location: PathLike | None = None, title: str = "Open a Folder"
+    filename: str | None = None,
+    location: PathLike | None = None,
+    title: str = "Open a Folder",
 ) -> Path:
     try:
         return _native_dialog.open_single_dir(filename, location, title)
