@@ -1,12 +1,19 @@
 [package]
-name = "native-dialog"
+name = "native-dialog-py"
 version = "0.1.0"
 edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "native_dialog"
+name = "_native_dialog"
 crate-type = ["cdylib"]
 
+[features]
+default = ["windows_dpi_awareness"]
+async = ["native-dialog/async"]
+windows_dpi_awareness = ["native-dialog/windows_dpi_awareness"]
+windows_visual_styles = ["native-dialog/windows_visual_styles"]
+
 [dependencies]
+native-dialog = "0.9.7"
 pyo3 = "0.28.3"
