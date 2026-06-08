@@ -85,6 +85,11 @@ It might be enabled by default when the async support for pyo3 is stablized. Cur
 
 Treat native-dialog as unstable. Pin your dependency as `~=0.X.0` when using this.
 
+### v0.3.1
+
+* Fix release issue
+* Make cli to work
+
 ### v0.3.0
 
 * Add level and NativeDialog to the top level
