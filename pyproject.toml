@@ -14,7 +14,6 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
     "License :: OSI Approved :: Apache Software License",
     "Operating System :: Microsoft :: Windows",
-    "Operating System :: macOS",
     "Operating System :: POSIX :: Linux",
     "Typing :: Typed",
     "Intended Audience :: Developers",
