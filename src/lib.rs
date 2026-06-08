@@ -4,7 +4,7 @@ mod helpers;
 
 /// native interface to native_dialog
 #[pymodule]
-mod _native_dialog {
+mod native_dialog {
     use crate::helpers::*;
     use pyo3::prelude::*;
     use std::path::PathBuf;

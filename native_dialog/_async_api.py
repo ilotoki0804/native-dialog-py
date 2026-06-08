@@ -1,10 +1,8 @@
 import os
-import typing
 from os import PathLike
 from pathlib import Path
 
-import _native_dialog
-
+import native_dialog.native_dialog as raw
 from native_dialog._base import Level, NativeDialogError
 
 __all__ = [
@@ -17,23 +15,21 @@ __all__ = [
     "async_save_single_file",
 ]
 
-_native_dialog: typing.Any
-
 
 def async_support() -> bool:
-    return _native_dialog.async_support()
+    return raw.async_support()
 
 
 async def async_confirm(title: str, text: str, level: Level = "warning") -> bool:
     try:
-        return await _native_dialog.async_confirm(title, text, level)
+        return await raw.async_confirm(title, text, level)
     except RuntimeError as exc:
         raise NativeDialogError(*exc.args)
 
 
 async def async_alert(title: str, text: str, level: Level = "warning") -> None:
     try:
-        return await _native_dialog.async_alert(title, text, level)
+        return await raw.async_alert(title, text, level)
     except RuntimeError as exc:
         raise NativeDialogError(*exc.args)
 
@@ -45,7 +41,7 @@ async def async_open_multiple_files(
     filters: list[tuple[str, list[str]]] | None = None,
 ) -> list[Path]:
     try:
-        return await _native_dialog.async_open_multiple_files(
+        return await raw.async_open_multiple_files(
             filename, None if location is None else os.fspath(location), title, filters
         )
     except RuntimeError as exc:
@@ -58,7 +54,7 @@ async def async_open_single_dir(
     title: str = "Open a Folder",
 ) -> Path:
     try:
-        return await _native_dialog.async_open_single_dir(filename, location, title)
+        return await raw.async_open_single_dir(filename, location, title)
     except RuntimeError as exc:
         raise NativeDialogError(*exc.args)
 
@@ -70,7 +66,7 @@ async def async_open_single_file(
     filters: list[tuple[str, list[str]]] | None = None,
 ) -> Path:
     try:
-        return await _native_dialog.async_open_single_file(
+        return await raw.async_open_single_file(
             filename, None if location is None else os.fspath(location), title, filters
         )
     except RuntimeError as exc:
@@ -84,7 +80,7 @@ async def async_save_single_file(
     filters: list[tuple[str, list[str]]] | None = None,
 ) -> Path:
     try:
-        return await _native_dialog.async_open_single_file(
+        return await raw.async_open_single_file(
             filename, None if location is None else os.fspath(location), title, filters
         )
     except RuntimeError as exc:
