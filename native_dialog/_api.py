@@ -33,6 +33,26 @@ def alert(title: str, text: str, level: Level = "warning") -> None:
         raise NativeDialogError(*exc.args)
 
 
+def file_dialog(
+    filename: str | None = None,
+    location: PathLike | None = None,
+    title: str | None = None,
+    filters: list[tuple[str, list[str]]] | None = None,
+    *,
+    directory: bool = False,
+    save: bool = False,
+    multiple: bool = False,
+) -> Path | list[Path]:
+    if save:
+        return save_single_file(filename, location, title, filters)
+    if directory:
+        return open_single_dir(filename, location, title)
+    if multiple:
+        return open_multiple_files(filename, location, title, filters)
+    else:
+        return open_single_file(filename, location, title, filters)
+
+
 def open_multiple_files(
     filename: str | None = None,
     location: PathLike | None = None,
