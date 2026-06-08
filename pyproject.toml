@@ -37,3 +37,7 @@ line-length = 120
 [tool.ruff.lint]
 select = ["E", "UP", "W", "I", "F"]
 ignore = ["E501", "E402", "S101", "F403"]
+
+[project.scripts]
+native-dialog = "native_dialog.__main__:main"
+native_dialog = "native_dialog.__main__:main"
